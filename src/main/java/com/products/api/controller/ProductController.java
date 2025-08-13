@@ -33,9 +33,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductWithDetailDto> findById(@PathVariable Long id) {
-        return productService.findById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.ok(productService.findById(id));
     }
 
 }
