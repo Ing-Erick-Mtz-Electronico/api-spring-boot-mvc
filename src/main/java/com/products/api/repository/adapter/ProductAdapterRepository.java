@@ -16,7 +16,7 @@ import com.products.api.repository.port.IProductPortRepository;
 
 @Repository
 @RequiredArgsConstructor
-public class IProductAdapterRepository implements IProductPortRepository, ProductModelBuilder {
+public class ProductAdapterRepository implements IProductPortRepository, ProductModelBuilder {
 
     private final IPruductJpaRepository productJpaRepository;
 
