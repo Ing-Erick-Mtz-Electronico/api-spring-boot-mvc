@@ -12,6 +12,9 @@ import com.products.api.exception.GenericException;
 import com.products.api.service.interfaces.IProductService;
 import com.products.api.repository.port.IProductPortRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ProductService implements IProductService, ProductDtoBuilder {
     
     private final IProductPortRepository productPortRepository;
@@ -21,13 +24,30 @@ public class ProductService implements IProductService, ProductDtoBuilder {
     }
 
     public Page<ProductToListDto> findPageWithFilters(String name, String category, Pageable pageable) {
-        return productPortRepository.findPageWithFilters(name, category, pageable)
-            .map(this::toBasicProductDto);
+        log.info("Buscando productos con filtros: name={}, category={}", name, category);
+
+        try {
+            return productPortRepository.findPageWithFilters(name, category, pageable)
+                .map(this::toBasicProductDto);
+        } catch (Exception e) {
+            log.error("Error al buscar productos con filtros: name={}, category={}", name, category, e);
+            throw new GenericException(ErrorConstant.INTERNAL_SERVER_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     public ProductWithDetailDto findById(Long id) {
-        return productPortRepository.findById(id)
-            .map(this::toFullProductDto)
-            .orElseThrow(() -> new GenericException(ErrorConstant.PRODUCT_NOT_FOUND, HttpStatus.NOT_FOUND));
+        log.info("Buscando producto con ID: {}", id);
+        
+        try {
+            return productPortRepository.findById(id)
+                .map(this::toFullProductDto)
+                .orElseThrow(() -> new GenericException(
+                    ErrorConstant.PRODUCT_NOT_FOUND, 
+                    HttpStatus.NOT_FOUND
+                ));
+        } catch (GenericException e) {
+            log.warn("Producto no encontrado con ID: {}", id);
+            throw e;
+        }
     }
 }

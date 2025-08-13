@@ -10,6 +10,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.products.api.constant.error.ErrorConstant;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandlerMvc {
 
@@ -17,6 +20,7 @@ public class GlobalExceptionHandlerMvc {
     public ResponseEntity<ErrorDetail> handleGlobalException(
             Exception exception, WebRequest webRequest) {
 
+        log.error("Error interno del servidor: {}", exception.getMessage(), exception);
         ErrorDetail errorDetails = ErrorDetail.builder()
                 .timeStamp(LocalDateTime.now())
                 .message(exception.getMessage())

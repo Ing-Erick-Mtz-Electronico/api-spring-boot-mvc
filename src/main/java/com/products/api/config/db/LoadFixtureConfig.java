@@ -34,15 +34,21 @@ public class LoadFixtureConfig {
         try {
             return new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
         } catch (IOException e) {
+            log.error("Failed to read SQL file: {}", path, e);
             throw new RuntimeException("Failed to read SQL file: " + path, e);
         }
     }
 
     private void executeSql(JdbcTemplate jdbcTemplate, String sql) {
-        for (String statement : sql.split(";")) {
-            if (!statement.trim().isEmpty()) {
-                jdbcTemplate.execute(statement);
+        try {
+            for (String statement : sql.split(";")) {
+                if (!statement.trim().isEmpty()) {
+                    jdbcTemplate.execute(statement);
+                }
             }
+        } catch (Exception e) {
+            log.error("Failed to execute SQL: {}", sql, e);
+            throw new RuntimeException("Failed to execute SQL: " + sql, e);
         }
     }
 }
