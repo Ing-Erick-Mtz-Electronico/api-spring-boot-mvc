@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import com.products.api.dto.healthCheck.HealthCheckDto;
+
 class HealthCheckControllerTest {
 
     private HealthCheckController healthCheckController;
@@ -22,7 +24,7 @@ class HealthCheckControllerTest {
     @DisplayName("Should return OK status with correct JSON response")
     void healthCheck_ShouldReturnOkStatus_WithCorrectJsonResponse() {
         // Act
-        ResponseEntity<String> response = healthCheckController.healthCheck();
+        ResponseEntity<HealthCheckDto> response = healthCheckController.healthCheck();
 
         // Assert
         assertNotNull(response);
