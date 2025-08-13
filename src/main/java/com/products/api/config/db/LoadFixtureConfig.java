@@ -5,6 +5,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.context.annotation.Profile;
+
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 
@@ -12,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
+@Profile("!test")
 public class LoadFixtureConfig {
 
     @Bean
