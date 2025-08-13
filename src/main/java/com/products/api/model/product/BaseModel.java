@@ -17,5 +17,6 @@ public class BaseModel {
     private Long id;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private LocalDateTime deletedAt;
     private Boolean isActive;
 }
