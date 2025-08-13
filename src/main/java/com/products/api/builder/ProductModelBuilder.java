@@ -9,26 +9,27 @@ import com.products.api.repository.entity.CategoryEntity;
 import com.products.api.repository.entity.ImageEntity;
 import com.products.api.repository.entity.ProductEntity;
 
-public interface ProductBuilder {
-    default ProductModel toProductModel(ProductEntity productEntity) {
+public interface ProductModelBuilder {
+
+    default ProductModel toFullProductModel(ProductEntity productEntity) {
         return ProductModel.builder()
             .id(productEntity.getId())
             .name(productEntity.getName())
             .description(productEntity.getDescription())
             .price(productEntity.getPrice())
             .categories(productEntity.getCategories().stream()
-                .map(this::toCategoryModel)
+                .map(this::toFullCategoryModel)
                 .toList())
             .images(productEntity.getImages().stream()
-                .map(this::toImageModel)
+                .map(this::toFullImageModel)
                 .toList())
             .attributes(productEntity.getAttributes().stream()
-                .map(this::toAttributeModel)
+                .map(this::toFullAttributeModel)
                 .toList())
             .build();
     }
 
-    default CategoryModel toCategoryModel(CategoryEntity categoryEntity) {
+    default CategoryModel toFullCategoryModel(CategoryEntity categoryEntity) {
         return CategoryModel.builder()
             .id(categoryEntity.getId())
             .name(categoryEntity.getName())
@@ -36,18 +37,27 @@ public interface ProductBuilder {
             .build();
     }
 
-    default ImageModel toImageModel(ImageEntity imageEntity) {
+    default ImageModel toFullImageModel(ImageEntity imageEntity) {
         return ImageModel.builder()
             .id(imageEntity.getId())
             .url(imageEntity.getUrl())
             .build();
     }
 
-    default AttributeModel toAttributeModel(AttributeEntity attributeEntity) {
+    default AttributeModel toFullAttributeModel(AttributeEntity attributeEntity) {
         return AttributeModel.builder()
             .id(attributeEntity.getId())
             .name(attributeEntity.getName())
             .description(attributeEntity.getDescription())
+            .build();
+    }
+
+    default ProductModel toBasicProductModel(ProductEntity productEntity) {
+        return ProductModel.builder()
+            .id(productEntity.getId())
+            .name(productEntity.getName())
+            .description(productEntity.getDescription())
+            .price(productEntity.getPrice())
             .build();
     }
 }

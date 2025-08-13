@@ -3,6 +3,7 @@ package com.products.api.repository.adapter.out;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +18,7 @@ public interface IPruductJpaRepository extends JpaRepository<ProductEntity, Long
         AND (:name IS NULL OR p.name ILIKE CONCAT('%', :name, '%'))
         AND (:category IS NULL OR EXISTS (SELECT c FROM p.categories c WHERE c.name = :category))
     """)
-    List<ProductEntity> findPageWithFilters(
+    Page<ProductEntity> findPageWithFilters(
         String name,
         String category,
         Pageable pageable);
