@@ -12,13 +12,7 @@ import com.products.api.model.product.ImageModel;
 import com.products.api.constant.error.ErrorConstant;
 import com.products.api.model.product.AttributeModel;
 import com.products.api.model.product.ProductModel;
-import com.products.api.repository.adapter.ProductAdapterRepository;
-import com.products.api.repository.entity.CategoryEntity;
-import com.products.api.repository.entity.AttributeEntity;
-import com.products.api.repository.entity.ImageEntity;
-import com.products.api.repository.entity.ProductEntity;
 import com.products.api.repository.port.IProductPortRepository;
-import com.products.api.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.BeforeEach;

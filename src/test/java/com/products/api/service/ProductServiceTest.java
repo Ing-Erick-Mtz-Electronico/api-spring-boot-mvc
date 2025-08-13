@@ -20,7 +20,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 
-import com.products.api.builder.ProductDtoBuilder;
 import com.products.api.constant.error.ErrorConstant;
 import com.products.api.dto.product.ProductToListDto;
 import com.products.api.dto.product.ProductWithDetailDto;
