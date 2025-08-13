@@ -1,5 +1,8 @@
 package com.products.api.builder;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.products.api.model.product.ProductModel;
 import com.products.api.model.product.CategoryModel;
 import com.products.api.model.product.ImageModel;
@@ -17,15 +20,21 @@ public interface ProductModelBuilder {
             .name(productEntity.getName())
             .description(productEntity.getDescription())
             .price(productEntity.getPrice())
-            .categories(productEntity.getCategories().stream()
-                .map(this::toFullCategoryModel)
-                .toList())
-            .images(productEntity.getImages().stream()
-                .map(this::toFullImageModel)
-                .toList())
-            .attributes(productEntity.getAttributes().stream()
-                .map(this::toFullAttributeModel)
-                .toList())
+            .categories(Optional.ofNullable(productEntity.getCategories())
+                .orElse(List.of())
+                    .stream()
+                    .map(this::toFullCategoryModel)
+                    .toList())
+            .images(Optional.ofNullable(productEntity.getImages())
+                .orElse(List.of())
+                    .stream()
+                    .map(this::toFullImageModel)
+                    .toList())
+            .attributes(Optional.ofNullable(productEntity.getAttributes())
+                .orElse(List.of())
+                    .stream()
+                    .map(this::toFullAttributeModel)
+                    .toList())
             .build();
     }
 

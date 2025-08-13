@@ -8,6 +8,10 @@ import com.products.api.model.product.ImageModel;
 import com.products.api.model.product.AttributeModel;
 import com.products.api.dto.product.CategoryDto;
 import com.products.api.dto.product.ImageDto;
+
+import java.util.List;
+import java.util.Optional;
+
 import com.products.api.dto.product.AttributeDto;
 
 public interface ProductDtoBuilder {
@@ -27,15 +31,18 @@ public interface ProductDtoBuilder {
             .name(productModel.getName())
             .description(productModel.getDescription())
             .price(productModel.getPrice())
-            .categories(productModel.getCategories().stream()
-                .map(this::toFullCategoryDto)
-                .toList())
-            .images(productModel.getImages().stream()
-                .map(this::toFullImageDto)
-                .toList())
-            .attributes(productModel.getAttributes().stream()
-                .map(this::toFullAttributeDto)
-                .toList())
+            .categories(Optional.ofNullable(productModel.getCategories())
+                .orElse(List.of()).stream()
+                    .map(this::toFullCategoryDto)
+                    .toList())
+            .images(Optional.ofNullable(productModel.getImages())
+                .orElse(List.of()).stream()
+                    .map(this::toFullImageDto)
+                    .toList())
+            .attributes(Optional.ofNullable(productModel.getAttributes())
+                .orElse(List.of()).stream()
+                    .map(this::toFullAttributeDto)
+                    .toList())
             .build();
     }
 
