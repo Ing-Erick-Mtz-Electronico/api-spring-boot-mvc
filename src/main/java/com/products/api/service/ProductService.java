@@ -7,9 +7,10 @@ import org.springframework.data.domain.Pageable;
 
 import com.products.api.builder.ProductBuilder;
 import com.products.api.model.product.ProductModel;
+import com.products.api.service.interfaces.IProductService;
 import com.products.api.repository.port.IProductPortRepository;
 
-public class ProductService implements ProductBuilder {
+public class ProductService implements IProductService, ProductBuilder {
     
     private final IProductPortRepository productPortRepository;
 
