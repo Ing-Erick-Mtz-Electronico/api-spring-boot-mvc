@@ -1,6 +1,5 @@
 package com.products.api.repository.adapter.out;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
