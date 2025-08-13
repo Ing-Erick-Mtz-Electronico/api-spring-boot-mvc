@@ -14,9 +14,8 @@ public interface IPruductJpaRepository extends JpaRepository<ProductEntity, Long
     @Query("""
         SELECT p FROM ProductEntity p
         WHERE p.isActive = true
-        AND (:name IS NULL OR p.name ILIKE '%:name%')
-        AND (:category IS NULL OR :category = ANY(p.categories.name))
-        AND p.isActive = true
+        AND (:name IS NULL OR p.name ILIKE CONCAT('%', :name, '%'))
+        AND (:category IS NULL OR EXISTS (SELECT c FROM p.categories c WHERE c.name = :category))
     """)
     List<ProductEntity> findPageWithFilters(
         String name,
