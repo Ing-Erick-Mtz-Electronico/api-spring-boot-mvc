@@ -1,13 +1,16 @@
 package com.products.api.service.interfaces;
 
-import com.products.api.model.product.ProductModel;
-import java.util.List;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import com.products.api.dto.product.ProductToListDto;
+import com.products.api.dto.product.ProductWithDetailDto;
 
 public interface IProductService {
 
-    List<ProductModel> findPageWithFilters(String name, String category, Pageable pageable);
+    Page<ProductToListDto> findPageWithFilters(String name, String category, Pageable pageable);
 
-    Optional<ProductModel> findById(Long id);
+    Optional<ProductWithDetailDto> findById(Long id);
 }
