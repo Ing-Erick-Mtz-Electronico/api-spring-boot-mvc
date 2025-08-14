@@ -26,7 +26,7 @@ La API implementa una arquitectura hexagonal (puertos y adaptadores) que separa 
 
 ```bash
 git clone https://github.com/Ing-Erick-Mtz-Electronico/api-spring-boot-mvc
-cd api api-spring-boot-mvc
+cd api-spring-boot-mvc
 ```
 
 ### Ejecución Local
