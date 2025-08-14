@@ -1,5 +1,18 @@
 # Products API
 
+## Tabla de contenido
+
+- [Descripción del Proyecto](#descripción-del-proyecto)
+- [Diagrama de arquitectura](#diagrama-de-arquitectura)
+- [Instrucciones de Instalación y Ejecución](#instrucciones-de-instalación-y-ejecución)
+- [Decisiones de Diseño Clave](#decisiones-de-diseño-clave)
+- [Manejo de Excepciones y Logging](#manejo-de-excepciones-y-logging)
+- [Consideraciones de Escalabilidad para Producción](#consideraciones-de-escalabilidad-para-producción)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Contribución](#contribución)
+
+---
+
 ## Descripción del Proyecto
 
 Products API es una solución robusta y escalable para la gestión de productos desarrollada con Spring Boot 3.5.4 y Java 17. La API proporciona endpoints RESTful para consultar productos con capacidades de filtrado, paginación y búsqueda avanzada.
@@ -13,6 +26,9 @@ La API implementa una arquitectura hexagonal (puertos y adaptadores) que separa 
 - **Filtros Avanzados**: Búsqueda por múltiples criterios
 - **Documentación Automática**: API documentada con OpenAPI 3.0
 - **Manejo de Errores**: Sistema robusto de excepciones y logging
+
+## Diagrama de arquitectura
+![diagrama](./diagram/architecture_diagram.png)
 
 ## Instrucciones de Instalación y Ejecución
 
