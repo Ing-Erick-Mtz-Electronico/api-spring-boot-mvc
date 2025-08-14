@@ -3,6 +3,7 @@
 ## Tabla de contenido
 
 - [Descripción del Proyecto](#descripción-del-proyecto)
+- [Diagrama de arquitectura](#diagrama-de-base-de-datos)
 - [Diagrama de arquitectura](#diagrama-de-arquitectura)
 - [Instrucciones de Instalación y Ejecución](#instrucciones-de-instalación-y-ejecución)
 - [Decisiones de Diseño Clave](#decisiones-de-diseño-clave)
@@ -26,6 +27,9 @@ La API implementa una arquitectura hexagonal (puertos y adaptadores) que separa 
 - **Filtros Avanzados**: Búsqueda por múltiples criterios
 - **Documentación Automática**: API documentada con OpenAPI 3.0
 - **Manejo de Errores**: Sistema robusto de excepciones y logging
+
+## Diagrama de base de datos
+![modelo](./diagram/database_diagram.png)
 
 ## Diagrama de arquitectura
 ![diagrama](./diagram/architecture_diagram.png)
