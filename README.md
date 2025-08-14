@@ -3,7 +3,7 @@
 ## Tabla de contenido
 
 - [Descripción del Proyecto](#descripción-del-proyecto)
-- [Diagrama de arquitectura](#diagrama-de-base-de-datos)
+- [Diagrama de base de datos](#diagrama-de-base-de-datos)
 - [Diagrama de arquitectura](#diagrama-de-arquitectura)
 - [Instrucciones de Instalación y Ejecución](#instrucciones-de-instalación-y-ejecución)
 - [Decisiones de Diseño Clave](#decisiones-de-diseño-clave)
