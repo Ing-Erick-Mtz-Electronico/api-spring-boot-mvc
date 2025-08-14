@@ -25,7 +25,7 @@ La API implementa una arquitectura hexagonal (puertos y adaptadores) que separa 
 ### Clonación del Proyecto
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Ing-Erick-Mtz-Electronico/api-spring-boot-mvc
 cd api
 ```
 
@@ -178,7 +178,7 @@ Utilizamos el patrón Builder con Lombok para:
 - Auto-scaling basado en métricas
 - Load balancing con múltiples instancias
 
-### 7. Resiliencia
+### 6. Resiliencia
 
 **Patrones:**
 - Circuit breaker para llamadas externas
